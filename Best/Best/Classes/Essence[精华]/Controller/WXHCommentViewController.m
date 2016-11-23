@@ -224,6 +224,7 @@ static NSString *const ID = @"commentCell";
 #pragma mark - <UITableViewDelegate>
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     WXHCommentHeaderView *view = [WXHCommentHeaderView headerViewWithTableView:tableView];
@@ -236,8 +237,49 @@ static NSString *const ID = @"commentCell";
     }
     return view;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+#warning MenuController是单例,在其他控制器使用的时候要将menuItems数据清空
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    if (menuController.isMenuVisible) { // 已经显示
+        [menuController setMenuVisible:NO animated:YES];
+    }else{
+        // 被点击的cell
+        WXHCommentCell *cell = (WXHCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
+        // cell作为第一响应者
+        [cell becomeFirstResponder];
+        // 显示MenuController
+        UIMenuItem *ding = [[UIMenuItem alloc] initWithTitle:@"顶" action:@selector(dingAction:)];
+        UIMenuItem *replay = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(replayAction:)];
+        UIMenuItem *report = [[UIMenuItem alloc] initWithTitle:@"举报" action:@selector(reportAction:)];
+        menuController.menuItems = @[ding,replay,report];
+        // 设置显示的位置
+        CGRect rect = CGRectMake(0, cell.wxh_height * 0.5, cell.wxh_width, cell.wxh_height * 0.5);
+        [menuController setTargetRect:rect inView:cell];
+        [menuController setMenuVisible:YES animated:YES];
+    }
+}
+#pragma mark - 监听MenuItem的点击
+-(void)dingAction:(UIMenuController *)menu{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    WXHLOG(@"%s  %@",__func__,[self commentInIndexPath:indexPath].content);
+}
+-(void)replayAction:(UIMenuController *)menu{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    WXHLOG(@"%s  %@",__func__,[self commentInIndexPath:indexPath].content);
+}
+-(void)reportAction:(UIMenuController *)menu{
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    WXHLOG(@"%s  %@",__func__,[self commentInIndexPath:indexPath].content);
+}
+#pragma mark - 控制器销毁
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    // 恢复帖子的top_cmt
+    if (self.saved_top_cmt) {
+        self.topic.top_cmt = self.saved_top_cmt;
+        self.topic.cellHeight = 0;
+    }
+
 }
 @end

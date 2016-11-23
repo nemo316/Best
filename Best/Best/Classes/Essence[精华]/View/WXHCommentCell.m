@@ -54,4 +54,11 @@
     
     [super setFrame:frame];
 }
+#pragma mark - MenuController
+-(BOOL)canBecomeFirstResponder{
+    return YES;
+}
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender{
+    return NO;
+}
 @end
