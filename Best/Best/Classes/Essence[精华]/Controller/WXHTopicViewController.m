@@ -16,6 +16,7 @@
 #import <SDImageCache.h>
 #import "WXHRefreshHeader.h"
 #import "WXHCommentViewController.h"
+#import "WXHNewViewController.h"
 @interface WXHTopicViewController ()
 /** manager*/
 @property(nonatomic,strong) AFHTTPSessionManager *manager;
@@ -107,6 +108,10 @@ static NSString *const ID = @"all";
     [self.tableView.mj_header beginRefreshing];
     
 }
+#pragma mark - 定义参数a
+-(NSString *)a{
+    return [self.parentViewController isKindOfClass:[WXHNewViewController class]] ? @"newlist" : @"list";
+}
 #pragma mark - 加载新数据
 -(void)loadNewData{
     
@@ -114,11 +119,16 @@ static NSString *const ID = @"all";
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     // 请求数据
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"a"] = @"list";
+    parameters[@"a"] = self.a;
     parameters[@"c"] = @"data";
     parameters[@"type"] = @(self.type);
     self.manager = [WXHHttpTool get:WXHCommonURL params:parameters success:^(id responseObj) {
         WXHAFNWriteToPlist(hot)
+        // 当评论为空时,该服务器返回数组
+        if (![responseObj isKindOfClass:[NSDictionary class]]) {
+            [self.tableView.mj_header endRefreshing];
+            return;
+        }
         // 存储maxtime
         self.maxtime = responseObj[@"info"][@"maxtime"];
         // 字典数组转模型数组
@@ -142,12 +152,17 @@ static NSString *const ID = @"all";
     // 取消之前的请求
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    parameters[@"a"] = @"list";
+    parameters[@"a"] = self.a;
     parameters[@"c"] = @"data";
     parameters[@"type"] = @(self.type);
     parameters[@"maxtime"] = self.maxtime;
     
     self.manager = [WXHHttpTool get:WXHCommonURL params:parameters success:^(id responseObj) {
+        // 当评论为空时,该服务器返回数组
+        if (![responseObj isKindOfClass:[NSDictionary class]]) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            return;
+        }
         // 存储maxtime
         self.maxtime = responseObj[@"info"][@"maxtime"];
         // 字典数组转模型数组

@@ -22,6 +22,15 @@
     [navBar setTitleTextAttributes:attr];
     [navBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
 
+    NSMutableDictionary *itemAttributes = [NSMutableDictionary dictionary];
+    itemAttributes[NSForegroundColorAttributeName] = [UIColor blackColor];
+    itemAttributes[NSFontAttributeName] = [UIFont systemFontOfSize:17];
+    UIBarButtonItem *item = [UIBarButtonItem appearanceWhenContainedIn:self, nil];
+    [item setTitleTextAttributes:itemAttributes forState:UIControlStateNormal];
+    
+    NSMutableDictionary *itemDisabledAttributes = [NSMutableDictionary dictionary];
+    itemDisabledAttributes[NSForegroundColorAttributeName] = [UIColor lightGrayColor];
+    [item setTitleTextAttributes:itemDisabledAttributes forState:UIControlStateDisabled];
 }
 
 - (void)viewDidLoad {

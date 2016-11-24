@@ -6,8 +6,7 @@
 //  Copyright © 2016年 nemo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface WXHNewViewController : UIViewController
+#import "WXHEssenceViewController.h"
+@interface WXHNewViewController : WXHEssenceViewController
 
 @end

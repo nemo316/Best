@@ -10,6 +10,8 @@
 #import "WXHPublishView.h"
 #import "WXHFastLogButton.h"
 #import <POP.h>
+#import "WXHPostSessionViewController.h"
+#import "WXHMainNavigationController.h"
 #define WXHRootView [UIApplication sharedApplication].keyWindow.rootViewController.view
 
 @interface WXHPublishView ()
@@ -113,8 +115,11 @@ static UIWindow *window_;
 - (void)buttonClick:(UIButton *)button
 {
    [self cancleWithCompletionBlock:^{
-       if (button.tag == 0) {
-           WXHLOG(@"发视频");
+       if (button.tag == 2) { // 发段子
+           WXHPostSessionViewController *postSessionVC = [[WXHPostSessionViewController alloc] init];
+           WXHMainNavigationController *nav = [[WXHMainNavigationController alloc] initWithRootViewController:postSessionVC];
+           UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+           [rootVC presentViewController:nav animated:YES completion:nil];
        }
    }];
 }

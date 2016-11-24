@@ -108,6 +108,7 @@ static NSString *const ID = @"commentCell";
     self.tableView.mj_footer = [WXHRefreshFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
     self.tableView.mj_footer.hidden = YES;
 }
+
 #pragma mark - 加载新数据
 -(void)loadNewData{
 
@@ -121,6 +122,11 @@ static NSString *const ID = @"commentCell";
     params[@"hot"] = @"1";
     [WXHHttpTool get:WXHCommonURL params:params success:^(id responseObj) {
         WXHAFNWriteToPlist(comment);
+        // 当评论为空时,该服务器返回数组
+        if (![responseObj isKindOfClass:[NSDictionary class]]) {
+            [self.tableView.mj_header endRefreshing];
+            return;
+        }
         // 最热评论
         self.hotComments = [WXHComment mj_objectArrayWithKeyValuesArray:responseObj[@"hot"]];
         // 最新评论
@@ -157,6 +163,11 @@ static NSString *const ID = @"commentCell";
     params[@"lastcid"] = lastComment.ID;
     [WXHHttpTool get:WXHCommonURL params:params success:^(id responseObj) {
         WXHAFNWriteToPlist(comment);
+        // 当评论为空时,该服务器返回数组
+        if (![responseObj isKindOfClass:[NSDictionary class]]) {
+            self.tableView.mj_footer.hidden = YES;
+            return;
+        }
         // 最新评论
         NSArray *moreComments = [WXHComment mj_objectArrayWithKeyValuesArray:responseObj[@"data"]];
             self.currentPage = page;
