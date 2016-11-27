@@ -216,6 +216,10 @@ static NSString *const subCategoryID = @"subCategory";
 -(void)dealloc{
 
     [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
-    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
+    [SVProgressHUD dismiss];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 @end

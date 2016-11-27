@@ -8,16 +8,24 @@
 
 #import "WXHPostSessionViewController.h"
 #import "WXHPlaceHolderTextView.h"
+#import "WXHTagToolBar.h"
 @interface WXHPostSessionViewController ()<UITextViewDelegate>
-
+/** 自定义文本控件*/
+@property(nonatomic,weak) WXHPlaceHolderTextView *placeholderTextView;
+/** 工具条 */
+@property (nonatomic, weak) WXHTagToolBar *toolbar;
 @end
 
 @implementation WXHPostSessionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 设置导航栏
     [self setupNav];
+    // 设置占位文本框
     [self setupTextField];
+    // 设置工具条
+    [self setupToolBar];
 }
 #pragma mark - 设置导航栏
 -(void)setupNav{
@@ -44,6 +52,27 @@
     placeholderTextView.frame = self.view.bounds;
     placeholderTextView.delegate = self;
     [self.view addSubview:placeholderTextView];
+    self.placeholderTextView = placeholderTextView;
+}
+#pragma mark - 设置工具条
+- (void)setupToolBar{
+    WXHTagToolBar *toolBar = [WXHTagToolBar viewFromXib];
+    toolBar.wxh_width = self.view.wxh_width;
+    toolBar.wxh_y = self.view.wxh_height - toolBar.wxh_height;
+    [self.view addSubview:toolBar];
+    self.toolbar = toolBar;
+    // 键盘改变frame的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+#pragma mark - 监听键盘改变frame
+- (void)keyboardWillChangeFrame:(NSNotification *)note{
+    // 键盘最终的frame
+    CGRect keyBoardEndFrame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    // 动画时间
+    CGFloat duration = [note.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    [UIView animateWithDuration:duration animations:^{
+        self.toolbar.transform = CGAffineTransformMakeTranslation(0, keyBoardEndFrame.origin.y - kHeight);
+    }];
 }
 #pragma mark - <UITextViewDelegate>
 - (void)textViewDidChange:(UITextView *)textView{
@@ -56,5 +85,14 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
+    
+}
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    // 呼出键盘
+    [self.placeholderTextView becomeFirstResponder];
+}
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end

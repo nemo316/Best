@@ -6,8 +6,10 @@
 //  Copyright © 2016年 nemo. All rights reserved.
 //
 
-#import <M13ProgressViewRing.h>
+//#import <M13ProgressViewRing.h>
 
-@interface WXHProgressView : M13ProgressViewRing
+#import "DALabeledCircularProgressView.h"
 
+@interface WXHProgressView : DALabeledCircularProgressView
+// M13ProgressViewRing
 @end

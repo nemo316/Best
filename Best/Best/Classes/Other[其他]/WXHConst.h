@@ -24,6 +24,9 @@ UIKIT_EXTERN CGFloat const WXHTitlesViewH;
 /** 标签的高度 */
 UIKIT_EXTERN CGFloat const WXHTagH;
 
+/** 标签的间距 */
+UIKIT_EXTERN CGFloat const WXHTagMargin;
+
 /** 帖子-文字的Y值 */
 UIKIT_EXTERN CGFloat const WXHTopicTextY;
 

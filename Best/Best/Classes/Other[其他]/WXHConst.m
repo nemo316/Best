@@ -24,6 +24,9 @@ CGFloat const WXHTitlesViewH = 35;
 /** 标签的高度 */
 CGFloat const WXHTagH = 25;
 
+/** 标签的高度 */
+CGFloat const WXHTagMargin = 5;
+
 /** 帖子-文字的Y值 */
 CGFloat const WXHTopicTextY = 55;
 

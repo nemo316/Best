@@ -36,7 +36,9 @@
 #define WXHCommonBgColor WXHGrayColor(215)
 #define WXHRandomColor WXHColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
 // 标签的背景颜色
-#define XMGTagBgColor XMGColor(70, 142, 243)
+#define WXHTagBgColor WXHColor(70, 142, 243)
+// 标签的字体大小
+#define WXHTagFont [UIFont systemFontOfSize:14]
 /***********颜色*************/
 
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
@@ -46,3 +48,4 @@
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 // 弱引用
 #define WXHWeakSelf __weak typeof(self) weakSelf = self;
+

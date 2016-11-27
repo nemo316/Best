@@ -106,6 +106,11 @@
 		5A0B33031DE5766C00B33BFB /* WXHSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0B32A41DE5766C00B33BFB /* WXHSettingTableViewController.m */; };
 		5A0B33051DE576A000B33BFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A0B33041DE576A000B33BFB /* Assets.xcassets */; };
 		5A0B33081DE576D300B33BFB /* MBProgressHUD+WXH.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A0B33071DE576D300B33BFB /* MBProgressHUD+WXH.m */; };
+		5A40BDBC1DE82B64005EF2AB /* WXHTagToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BDBB1DE82B64005EF2AB /* WXHTagToolBar.m */; };
+		5A40BDBE1DE82B75005EF2AB /* WXHTagToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BDBD1DE82B75005EF2AB /* WXHTagToolBar.xib */; };
+		5A40BDC11DE8339F005EF2AB /* WXHTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BDC01DE8339F005EF2AB /* WXHTagViewController.m */; };
+		5AF663C61DEAB8C900DCF5B7 /* WXHTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF663C51DEAB8C900DCF5B7 /* WXHTagTextField.m */; };
+		5AF663C91DEAC04900DCF5B7 /* WXHTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF663C81DEAC04900DCF5B7 /* WXHTagButton.m */; };
 		DAE91159D0B319831E8CF1C0 /* libPods-Best.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 257237CBCE8B983F68871714 /* libPods-Best.a */; };
 /* End PBXBuildFile section */
 
@@ -302,6 +307,15 @@
 		5A0B33041DE576A000B33BFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A0B33061DE576D300B33BFB /* MBProgressHUD+WXH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+WXH.h"; sourceTree = "<group>"; };
 		5A0B33071DE576D300B33BFB /* MBProgressHUD+WXH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+WXH.m"; sourceTree = "<group>"; };
+		5A40BDBA1DE82B64005EF2AB /* WXHTagToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagToolBar.h; sourceTree = "<group>"; };
+		5A40BDBB1DE82B64005EF2AB /* WXHTagToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHTagToolBar.m; sourceTree = "<group>"; };
+		5A40BDBD1DE82B75005EF2AB /* WXHTagToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXHTagToolBar.xib; sourceTree = "<group>"; };
+		5A40BDBF1DE8339F005EF2AB /* WXHTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagViewController.h; sourceTree = "<group>"; };
+		5A40BDC01DE8339F005EF2AB /* WXHTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHTagViewController.m; sourceTree = "<group>"; };
+		5AF663C41DEAB8C900DCF5B7 /* WXHTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagTextField.h; sourceTree = "<group>"; };
+		5AF663C51DEAB8C900DCF5B7 /* WXHTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHTagTextField.m; sourceTree = "<group>"; };
+		5AF663C71DEAC04900DCF5B7 /* WXHTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagButton.h; sourceTree = "<group>"; };
+		5AF663C81DEAC04900DCF5B7 /* WXHTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHTagButton.m; sourceTree = "<group>"; };
 		89E29813F38EE9EEEEE8879F /* Pods-Best.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Best.release.xcconfig"; path = "Pods/Target Support Files/Pods-Best/Pods-Best.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -872,6 +886,8 @@
 			children = (
 				5A01552E1DE6E14800201457 /* WXHPostSessionViewController.h */,
 				5A01552F1DE6E14800201457 /* WXHPostSessionViewController.m */,
+				5A40BDBF1DE8339F005EF2AB /* WXHTagViewController.h */,
+				5A40BDC01DE8339F005EF2AB /* WXHTagViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -891,6 +907,13 @@
 				5A0B329E1DE5766C00B33BFB /* WXHPublishView.xib */,
 				5A0155341DE6E8DD00201457 /* WXHPlaceHolderTextView.h */,
 				5A0155351DE6E8DD00201457 /* WXHPlaceHolderTextView.m */,
+				5A40BDBA1DE82B64005EF2AB /* WXHTagToolBar.h */,
+				5A40BDBB1DE82B64005EF2AB /* WXHTagToolBar.m */,
+				5A40BDBD1DE82B75005EF2AB /* WXHTagToolBar.xib */,
+				5AF663C41DEAB8C900DCF5B7 /* WXHTagTextField.h */,
+				5AF663C51DEAB8C900DCF5B7 /* WXHTagTextField.m */,
+				5AF663C71DEAC04900DCF5B7 /* WXHTagButton.h */,
+				5AF663C81DEAC04900DCF5B7 /* WXHTagButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1073,6 +1096,7 @@
 				5A0B32C11DE5766C00B33BFB /* WXHTopicVoiceView.xib in Resources */,
 				5A0B32BB1DE5766C00B33BFB /* WXHTopicCell.xib in Resources */,
 				5A0B32C61DE5766C00B33BFB /* WXHLogRegistViewController.xib in Resources */,
+				5A40BDBE1DE82B75005EF2AB /* WXHTagToolBar.xib in Resources */,
 				5A0B32C41DE5766C00B33BFB /* WXHFriendTrendsViewController.xib in Resources */,
 				5A0B32E61DE5766C00B33BFB /* WXHSubTagTableViewCell.xib in Resources */,
 				5A0B33001DE5766C00B33BFB /* LaunchImage@2x.png in Resources */,
@@ -1182,6 +1206,7 @@
 				5A0B32B61DE5766C00B33BFB /* WXHTopic.m in Sources */,
 				5A0B32F51DE5766C00B33BFB /* WXHSaveTool.m in Sources */,
 				5A0B32F91DE5766C00B33BFB /* WXHWYViewController.m in Sources */,
+				5A40BDBC1DE82B64005EF2AB /* WXHTagToolBar.m in Sources */,
 				5A0B32F41DE5766C00B33BFB /* WXHRootViewController.m in Sources */,
 				5A0B32EC1DE5766C00B33BFB /* UIImage+WXHExtension.m in Sources */,
 				5A0B32E01DE5766C00B33BFB /* WXHSquareCollectionViewCell.m in Sources */,
@@ -1218,8 +1243,11 @@
 				5A0B32B41DE5766C00B33BFB /* WXHWordViewController.m in Sources */,
 				5A0B32A91DE5766C00B33BFB /* WXHADItem.m in Sources */,
 				5A0155361DE6E8DD00201457 /* WXHPlaceHolderTextView.m in Sources */,
+				5AF663C61DEAB8C900DCF5B7 /* WXHTagTextField.m in Sources */,
+				5AF663C91DEAC04900DCF5B7 /* WXHTagButton.m in Sources */,
 				5A0B32EE1DE5766C00B33BFB /* UIView+Frame.m in Sources */,
 				5A0B32B71DE5766C00B33BFB /* WXHUser.m in Sources */,
+				5A40BDC11DE8339F005EF2AB /* WXHTagViewController.m in Sources */,
 				5A0B32B31DE5766C00B33BFB /* WXHVoiceViewController.m in Sources */,
 				5A0B32DD1DE5766C00B33BFB /* WXHWebViewController.m in Sources */,
 				5A0B31A81DE5762300B33BFB /* main.m in Sources */,

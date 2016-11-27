@@ -47,7 +47,7 @@
     [self.imageView wxh_setOriginalImageWithURL:topic.large_image thumbnailImageWithURL:topic.large_image placehoder:nil progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         self.progressView.hidden = NO;
         // 占位图进度
-        topic.pictureProgress = receivedSize / expectedSize;
+        topic.pictureProgress = receivedSize / expectedSize * 1.0;
         [self.progressView setProgress:topic.pictureProgress animated:YES];
     } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         self.progressView.hidden = YES;
