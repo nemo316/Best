@@ -109,6 +109,7 @@
 		5A40BDBC1DE82B64005EF2AB /* WXHTagToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BDBB1DE82B64005EF2AB /* WXHTagToolBar.m */; };
 		5A40BDBE1DE82B75005EF2AB /* WXHTagToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A40BDBD1DE82B75005EF2AB /* WXHTagToolBar.xib */; };
 		5A40BDC11DE8339F005EF2AB /* WXHTagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A40BDC01DE8339F005EF2AB /* WXHTagViewController.m */; };
+		5A7190F61DEBC3A700562387 /* WXHLoginTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7190F51DEBC3A700562387 /* WXHLoginTool.m */; };
 		5AF663C61DEAB8C900DCF5B7 /* WXHTagTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF663C51DEAB8C900DCF5B7 /* WXHTagTextField.m */; };
 		5AF663C91DEAC04900DCF5B7 /* WXHTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF663C81DEAC04900DCF5B7 /* WXHTagButton.m */; };
 		DAE91159D0B319831E8CF1C0 /* libPods-Best.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 257237CBCE8B983F68871714 /* libPods-Best.a */; };
@@ -312,6 +313,8 @@
 		5A40BDBD1DE82B75005EF2AB /* WXHTagToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXHTagToolBar.xib; sourceTree = "<group>"; };
 		5A40BDBF1DE8339F005EF2AB /* WXHTagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagViewController.h; sourceTree = "<group>"; };
 		5A40BDC01DE8339F005EF2AB /* WXHTagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHTagViewController.m; sourceTree = "<group>"; };
+		5A7190F41DEBC3A700562387 /* WXHLoginTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHLoginTool.h; sourceTree = "<group>"; };
+		5A7190F51DEBC3A700562387 /* WXHLoginTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHLoginTool.m; sourceTree = "<group>"; };
 		5AF663C41DEAB8C900DCF5B7 /* WXHTagTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagTextField.h; sourceTree = "<group>"; };
 		5AF663C51DEAB8C900DCF5B7 /* WXHTagTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXHTagTextField.m; sourceTree = "<group>"; };
 		5AF663C71DEAC04900DCF5B7 /* WXHTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXHTagButton.h; sourceTree = "<group>"; };
@@ -752,6 +755,7 @@
 		5A0B32661DE5766C00B33BFB /* Other[其他] */ = {
 			isa = PBXGroup;
 			children = (
+				5A7190F31DEBC38500562387 /* LoginTool[登录工具] */,
 				5A0B32691DE5766C00B33BFB /* Catgory */,
 				5A0B32761DE5766C00B33BFB /* FileTool[缓存处理] */,
 				5A0B32791DE5766C00B33BFB /* HttpTool[网络工具] */,
@@ -949,6 +953,15 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5A7190F31DEBC38500562387 /* LoginTool[登录工具] */ = {
+			isa = PBXGroup;
+			children = (
+				5A7190F41DEBC3A700562387 /* WXHLoginTool.h */,
+				5A7190F51DEBC3A700562387 /* WXHLoginTool.m */,
+			);
+			name = "LoginTool[登录工具]";
 			sourceTree = "<group>";
 		};
 		C94B3C7E9328A54CB65C1281 /* Pods */ = {
@@ -1236,6 +1249,7 @@
 				5A0B32F61DE5766C00B33BFB /* AppDelegate.m in Sources */,
 				5A0B32D71DE5766C00B33BFB /* WXHMainTabBarController.m in Sources */,
 				5A0B32E71DE5766C00B33BFB /* WXHNewFeatureViewController.m in Sources */,
+				5A7190F61DEBC3A700562387 /* WXHLoginTool.m in Sources */,
 				5A0B32E41DE5766C00B33BFB /* WXHSubTagItem.m in Sources */,
 				5A0B32C91DE5766C00B33BFB /* WXHCategory.m in Sources */,
 				5A0B32AD1DE5766C00B33BFB /* WXHEssenceViewController.m in Sources */,

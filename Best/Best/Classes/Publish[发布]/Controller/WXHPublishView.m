@@ -12,6 +12,7 @@
 #import <POP.h>
 #import "WXHPostSessionViewController.h"
 #import "WXHMainNavigationController.h"
+#import "WXHLoginTool.h"
 #define WXHRootView [UIApplication sharedApplication].keyWindow.rootViewController.view
 
 @interface WXHPublishView ()
@@ -122,6 +123,8 @@ static UIWindow *window_;
 {
    [self cancleWithCompletionBlock:^{
        if (button.tag == 2) { // 发段子
+           // 判断是否登录
+           if ([WXHLoginTool getUid]) return;
            WXHPostSessionViewController *postSessionVC = [[WXHPostSessionViewController alloc] init];
            WXHMainNavigationController *nav = [[WXHMainNavigationController alloc] initWithRootViewController:postSessionVC];
            UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
