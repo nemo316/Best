@@ -14,7 +14,8 @@
 #import "WXHTopicPictureView.h"
 #import "WXHComment.h"
 #import "WXHUser.h"
-@interface WXHTopicCell()
+#import "WXHLoginTool.h"
+@interface WXHTopicCell()<UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *passtimeLabel;
@@ -168,7 +169,18 @@
 }
 - (IBAction)clickAction:(UIButton *)sender {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"举报",@"收藏", nil];
+    sheet.delegate = self;
     [sheet showInView:self.window];
 }
-
+#pragma mark - <UIActionSheetDelegate>
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+ 
+    
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    // 点击取消直接返回,否则需要登录
+    if (buttonIndex == 2) return;
+    if (![WXHLoginTool getUid:YES]) return;
+    // 已经登录,执行相应操作
+}
 @end

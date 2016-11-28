@@ -10,11 +10,19 @@
 
 @interface WXHLoginTool : NSObject
 /**
- *  获得当前登录用于的uid
+ *  获得当前登录用户的uid
  *
  *  @return 返回NSString 已经登录  返回nil 没有登录
  */
 + (NSString *)getUid;
+/**
+ *  获得当前登录用户的uid,是否需要弹出登录模块
+ *
+ *  @param showLoginController 登录模块
+ *
+ *  @return 返回
+ */
++ (NSString *)getUid:(BOOL)showLoginController;
 /**
  *  存储当前用户的uid
  *

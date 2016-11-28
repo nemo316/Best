@@ -124,7 +124,7 @@ static UIWindow *window_;
    [self cancleWithCompletionBlock:^{
        if (button.tag == 2) { // 发段子
            // 判断是否登录
-           if ([WXHLoginTool getUid]) return;
+           if (![WXHLoginTool getUid:YES]) return;
            WXHPostSessionViewController *postSessionVC = [[WXHPostSessionViewController alloc] init];
            WXHMainNavigationController *nav = [[WXHMainNavigationController alloc] initWithRootViewController:postSessionVC];
            UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
