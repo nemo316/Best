@@ -79,6 +79,9 @@ static UIWindow *window_;
         CGFloat buttonX = buttonStartX + col * (xMargin + buttonW);
         CGFloat buttonEndY = buttonStartY + row * buttonH;
         CGFloat buttonBeginY = buttonEndY - kHeight;
+        // 修复起始时按钮显示在左上角
+        button.wxh_y = buttonBeginY;
+        button.wxh_x = buttonX;
         //
         // 按钮动画
         POPSpringAnimation *anim = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
@@ -99,6 +102,9 @@ static UIWindow *window_;
     CGFloat centerX = kWidth * 0.5;
     CGFloat centerEndY = kHeight * 0.2;
     CGFloat centerBeginY = centerEndY - kHeight;
+    // 修复起始时标语显示在左上角
+    sloganView.wxh_centerY = centerBeginY;
+    sloganView.wxh_centerX = centerX;
     anim.fromValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerBeginY)];
     anim.toValue = [NSValue valueWithCGPoint:CGPointMake(centerX, centerEndY)];
     anim.springBounciness = WXHSpringFactor;
