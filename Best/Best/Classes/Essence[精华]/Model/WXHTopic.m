@@ -24,7 +24,7 @@
 }
 #pragma mark - 重写cellHeight的get方法
 -(CGFloat)cellHeight{
-
+    
     // 如果计算过了,直接返回
     if (_cellHeight) return _cellHeight;
     // 顶部高度
@@ -32,17 +32,21 @@
     // 中间高度
     _cellHeight += [self.text boundingRectWithSize:CGSizeMake(kWidth - 2 * WXHCommonMargin * 2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:15]} context:nil].size.height + WXHCommonMargin;
     // 中间视图
-    if (self.type != WXHTopicTypeWord) { // 不是文字,即视频 音频 图片
-        CGFloat middleW = CGSizeMake(kWidth - 2 * WXHCommonMargin * 2, MAXFLOAT).width;
-        CGFloat middleH = middleW * self.height / self.width;
-        if (middleH >= kHeight) { // 显示的图片高度超过一个屏幕，就是超长图片
-            middleH = 200;
-            self.bigPicture = YES;
+    if (self.type != WXHTopicTypeWord) { // 不是文字,即视频 音频
+        // 避免服务器返回图片尺寸为0导致崩溃
+        if (self.width != 0 && self.height != 0) {
+            // 图片
+            CGFloat middleW = CGSizeMake(kWidth - 2 * WXHCommonMargin * 2, MAXFLOAT).width;
+            CGFloat middleH = middleW * self.height / self.width;
+            if (middleH >= kHeight) { // 显示的图片高度超过一个屏幕，就是超长图片
+                middleH = 200;
+                self.bigPicture = YES;
+            }
+            CGFloat middleX = WXHCommonMargin;
+            CGFloat middleY = _cellHeight;
+            self.frame = CGRectMake(middleX, middleY, middleW, middleH);
+            _cellHeight += middleH + WXHCommonMargin;
         }
-        CGFloat middleX = WXHCommonMargin;
-        CGFloat middleY = _cellHeight;
-        self.frame = CGRectMake(middleX, middleY, middleW, middleH);
-        _cellHeight += middleH + WXHCommonMargin;
     }
     
     // 最热评论高度
@@ -58,7 +62,7 @@
         _cellHeight += [hotStr boundingRectWithSize:CGSizeMake(kWidth - 2 * WXHCommonMargin * 2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + WXHCommonMargin;
     }
     
-
+    
     // 底部高度
     _cellHeight += 35 + WXHCommonMargin;
     return _cellHeight;
